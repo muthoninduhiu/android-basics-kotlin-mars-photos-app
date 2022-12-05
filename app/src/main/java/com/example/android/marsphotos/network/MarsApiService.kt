@@ -17,12 +17,13 @@ private val moshi = Moshi.Builder()
 private val retrofit = Retrofit.Builder()
     //Retrofit object with the base URL and the converter factory.
     .addConverterFactory(MoshiConverterFactory.create())
+    .baseUrl(BASE_URL)
     //create retrofit object
     .build()
 
 //Create an interface that explains how Retrofit talks to our web server.
 interface MarsApiService {
-    @GET("/photos")
+    @GET("photos")
     suspend fun getPhotos() : List<MarsPhoto>
 }
 
