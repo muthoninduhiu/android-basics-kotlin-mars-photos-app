@@ -44,7 +44,8 @@ class PhotoGridAdapter:
     }
 
     override fun onBindViewHolder(holder: MarsPhotosViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val marsPhoto = getItem(position)
+        holder.bind(marsPhoto)
     }
     companion object DiffCallback: DiffUtil.ItemCallback<MarsPhoto>() {
         override fun areItemsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
