@@ -15,6 +15,7 @@
  */
 package com.example.android.marsphotos.overview
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -37,7 +38,9 @@ class PhotoGridAdapter:
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarsPhotosViewHolder {
-        TODO("Not yet implemented")
+        return MarsPhotosViewHolder(
+            GridViewItemBinding.inflate(LayoutInflater.from(parent.context))
+        )
     }
 
     override fun onBindViewHolder(holder: MarsPhotosViewHolder, position: Int) {
