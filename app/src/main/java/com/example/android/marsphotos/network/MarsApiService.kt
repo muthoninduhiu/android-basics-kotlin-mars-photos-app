@@ -2,6 +2,7 @@ package com.example.android.marsphotos.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
 
 
 //add base URL
@@ -13,5 +14,8 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     //create retrofit object
     .build()
-class MarsApiService {
+//Create an interface that explains how Retrofit talks to our web server.
+interface MarsApiService {
+
+
 }
