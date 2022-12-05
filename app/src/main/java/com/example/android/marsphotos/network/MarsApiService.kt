@@ -15,12 +15,14 @@ private val retrofit = Retrofit.Builder()
     .addConverterFactory(ScalarsConverterFactory.create())
     //create retrofit object
     .build()
+
 //Create an interface that explains how Retrofit talks to our web server.
 interface MarsApiService {
     @GET("/photos")
-    fun getPhotos() : String
+    suspend fun getPhotos() : String
 }
 
+//add a lazily initialized retrofit object property
 object MarsApi{
         val retrofitService : MarsApiService by lazy{
             retrofit.create(MarsApiService::class.java)
