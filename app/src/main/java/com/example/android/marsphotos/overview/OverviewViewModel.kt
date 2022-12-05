@@ -32,6 +32,7 @@ enum class MarsApiStatus { LOADING, ERROR, DONE }
 class OverviewViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
+    //updates value of the place holder
     private val _status = MutableLiveData<MarsApiStatus>()
 
     // The external immutable LiveData for the request status
@@ -54,6 +55,7 @@ class OverviewViewModel : ViewModel() {
     /**
      * Gets Mars photos information from the Mars API Retrofit service and updates the
      * [MarsPhoto] [List] [LiveData].
+     * updates the placeholder response.
      */
     private fun getMarsPhotos() {
 
