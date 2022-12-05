@@ -59,7 +59,8 @@ class OverviewViewModel : ViewModel() {
      */
     private fun getMarsPhotos() {
         viewModelScope.launch {
-
+            //use MarsApi singleton to call the getPhotos function from retrofitService interface
+           val listResult =  MarsApi.retrofitService.getPhotos()
         }
     }
 
