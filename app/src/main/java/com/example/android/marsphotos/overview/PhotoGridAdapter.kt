@@ -25,16 +25,25 @@ import com.example.android.marsphotos.network.MarsPhoto
 
 class PhotoGridAdapter:
     ListAdapter<MarsPhoto, PhotoGridAdapter.MarsPhotosViewHolder>(DiffCallback){
+
         class MarsPhotosViewHolder(private var binding: GridViewItemBinding):
             RecyclerView.ViewHolder(binding.root){
                 fun bind(marsPhoto: MarsPhoto){
-                    binding.photo = marsPhoto
+                    binding.photo= marsPhoto
                     binding.executePendingBindings()
                 }
 
         }
-    override fun submitList(data: List<MarsPhoto>?) {
 
+    companion object DiffCallback: DiffUtil.ItemCallback<MarsPhoto>() {
+        override fun areItemsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
+            return oldItem.imgSrcUrl == newItem.imgSrcUrl
+        }
+
+        override fun areContentsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
+            //checks if ids are the same
+            return oldItem.id == newItem.id
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarsPhotosViewHolder {
@@ -47,18 +56,7 @@ class PhotoGridAdapter:
         val marsPhoto = getItem(position)
         holder.bind(marsPhoto)
     }
-    companion object DiffCallback: DiffUtil.ItemCallback<MarsPhoto>() {
-        override fun areItemsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
-            return oldItem.image_src == newItem.image_src
-        }
 
-        override fun areContentsTheSame(oldItem: MarsPhoto, newItem: MarsPhoto): Boolean {
-            //checks if ids are the same
-            return oldItem.id == newItem.id
-        }
-
-
-    }
 
 }
 
