@@ -28,7 +28,7 @@ import com.example.android.marsphotos.databinding.FragmentOverviewBinding
  * This fragment shows the the status of the Mars photos web services transaction.
  */
 class OverviewFragment : Fragment() {
-
+    /*holds a reference to the OverviewViewModel object*/
     private val viewModel: OverviewViewModel by viewModels()
 
     /**
