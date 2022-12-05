@@ -17,6 +17,5 @@ private val retrofit = Retrofit.Builder()
 //Create an interface that explains how Retrofit talks to our web server.
 interface MarsApiService {
     @GET("/photos")
-    fun getPhotos(){
-    }
+    fun getPhotos() : String
 }
