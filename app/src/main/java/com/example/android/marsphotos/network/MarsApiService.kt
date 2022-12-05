@@ -2,6 +2,7 @@ package com.example.android.marsphotos.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.create
 import retrofit2.http.GET
 
 
@@ -21,5 +22,7 @@ interface MarsApiService {
 }
 
 object MarsApi{
-
+        val retrofitService : MarsApiService by lazy{
+            retrofit.create(MarsApiService::class.java)
+        }
 }
