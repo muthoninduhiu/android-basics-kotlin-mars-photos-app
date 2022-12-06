@@ -32,6 +32,7 @@ import com.example.android.marsphotos.overview.PhotoGridAdapter
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<MarsPhoto>?) {
     val adapter = recyclerView.adapter as PhotoGridAdapter
+    //tells the RecyclerView when a new list is available.
     adapter.submitList(data)
 }
 
