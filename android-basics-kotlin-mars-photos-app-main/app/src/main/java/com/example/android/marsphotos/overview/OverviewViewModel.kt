@@ -39,10 +39,10 @@ class OverviewViewModel : ViewModel() {
 
     // Internally, we use a MutableLiveData, because we will be updating the List of MarsPhoto
     // with new values
-    private val _photos = MutableLiveData<MarsPhoto>()
+    private val _photos = MutableLiveData<List<MarsPhoto>>()
 
     // The external LiveData interface to the property is immutable, so only this class can modify
-    val photos: LiveData<MarsPhoto> = _photos
+    val photos: LiveData<List<MarsPhoto>> = _photos
 
     /**
      * Call getMarsPhotos() on init so we can display status immediately.
@@ -60,12 +60,12 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             _status.value = MarsApiStatus.LOADING
             try {
-                _photos.value = MarsApi.retrofitService.getPhotos()[0]
-                //_status.value =  "   First Mars image URL : ${_photos.value!!.imgSrcUrl}"
+                _photos.value = MarsApi.retrofitService.getPhotos()
+                _status.value =  MarsApiStatus.DONE
 
             } catch (e: Exception) {
                 _status.value = MarsApiStatus.ERROR
-               // _photos.value = listOf()
+                _photos.value = listOf()
             }
         }
     }
